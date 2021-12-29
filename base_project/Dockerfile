@@ -10,7 +10,7 @@ RUN adduser --uid $USER_ID --gid $GROUP_ID user
 
 COPY Gemfile* /
 
-#RUN gem install bundler:2.1.4
+RUN gem install bundler:2.2.28
 RUN bundle install
 
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs liblzma-dev libmariadb-dev
