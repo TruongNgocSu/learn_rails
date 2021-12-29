@@ -11,7 +11,11 @@ RUN adduser --uid $USER_ID --gid $GROUP_ID user
 ENV INSTALL_PATH /opt/app
 RUN mkdir -p $INSTALL_PATH
  
-RUN gem install rails bundler
+COPY Gemfile .
+COPY Gemfile.lock . 
+ 
+RUN bundle install 
+
 RUN chown -R user:user /opt/app
 WORKDIR /opt/app
  
