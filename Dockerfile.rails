@@ -1,0 +1,23 @@
+# Dockerfile.rails
+ 
+FROM ruby:2.6.6
+ 
+ARG USER_ID
+ARG GROUP_ID
+ 
+RUN addgroup --gid $GROUP_ID user
+RUN adduser --uid $USER_ID --gid $GROUP_ID user
+ 
+ENV INSTALL_PATH /opt/app
+RUN mkdir -p $INSTALL_PATH
+ 
+COPY Gemfile .
+COPY Gemfile.lock . 
+ 
+RUN bundle install 
+
+RUN chown -R user:user /opt/app
+WORKDIR /opt/app
+ 
+USER $USER_ID
+CMD ["/bin/sh"]
