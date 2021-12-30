@@ -3,24 +3,26 @@ class Flexirest::Api2Controller < ApplicationController
     render json: index_data
   end
 
+  def show
+    render json: show_data
+  end
+
   def create
-    render json: params.permit("name")
+    render json: params.permit(:name, :type)
   end
 
   def update
-    render json: updated_data
+    render json: params.permit(:name, :type, :id)
   end
 
   def destroy
-    render json: {}
   end
 
   private
-
-  def updated_data
+  def show_data
     {
-      color: "red",
-      value: "#f00"
+      "name":"test 123",
+      "type":"1"
     }
   end
 
