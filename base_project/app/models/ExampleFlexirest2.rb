@@ -1,5 +1,5 @@
 class ExampleFlexirest2 < BaseRequest
-
+  # lazy_load!
   get :all, '/flexirest/api3'
   get :find, '/flexirest/api3/:id'
   post :create, '/flexirest/api3'

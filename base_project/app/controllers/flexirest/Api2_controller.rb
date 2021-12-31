@@ -1,6 +1,7 @@
 class Flexirest::Api2Controller < ApplicationController
   def index
-    render json: index_data
+    render json:
+             # index_data
   end
 
   def show

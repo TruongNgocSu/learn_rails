@@ -7,10 +7,19 @@ class ExampleFlexirest < BaseRequest
   end
 
   get :all, '/flexirest/api2'
-  get :find, '/flexirest/api2/:id', :lazy => [exampleFlexirest2: { url: "/flexirest/api2"}]
+  get :find, '/flexirest/api2/:id'
   # get :find, '/flexirest/api2/:id'
   post :create, '/flexirest/api2'
   put :update, '/flexirest/api2/:id'
   delete :delete, '/flexirest/api2/:id'
+  get :seach, '/flexirest/api2', fake: :fake_data
+
+  def fake_data
+    p 123
+    {data:{
+      name:"test 123",
+      type:1
+    }}
+  end
 
 end

@@ -1,11 +1,18 @@
 class Flexirest::Api1Controller < ApplicationController
   def index
-    response = ExampleFlexirest.all
-    render json: response.to_json
+    begin
+      response = ExampleFlexirest.all
+
+      render json: response.to_json
+
+    rescue Flexirest::HTTPClientException, Flexirest::HTTPServerException => e
+      render json: e.body
+    end
   end
 
   def show
     ex = ExampleFlexirest.find(params[:id])
+    p ex
     render json: ex.to_json
   end
 
@@ -44,6 +51,10 @@ class Flexirest::Api1Controller < ApplicationController
     example = ExampleFlexirest.new
     example.id = params[:id]
     example.delete
+  end
+
+  def seach
+    render json: ExampleFlexirest.seach.to_json
   end
 
   private

@@ -3,5 +3,7 @@ Rails.application.routes.draw do
     resources :api1
     resources :api2
     resources :api3
+
+    get 'seach', to: 'api1#seach'
   end
 end
