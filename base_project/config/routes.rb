@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :flexirest, defaults: { format: :json } do
+    resources :api1
+    resources :api2
+    resources :api3
+
+    get 'seach', to: 'api1#seach'
+  end
 end
